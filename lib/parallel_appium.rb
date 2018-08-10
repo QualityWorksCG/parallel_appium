@@ -95,7 +95,9 @@ module ParallelAppium
                 end
 
       puts "Executing #{command}"
-      exec command
+      res = system command
+
+      open("#{ENV["BASE_DIR"]}/output.txt", 'w') { |f| f << res.to_s } 
     end
 
     # Define Spec path, validate platform and execute specs
